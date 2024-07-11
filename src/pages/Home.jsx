@@ -1,20 +1,21 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addNote } from "../features/notesSlice"
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import { addTask } from "../features/tasksSlice";
 
 const Home = () => {
     const [name, setName] = useState(JSON.parse(localStorage.getItem("name")) || "")
     const [title, setTitle] = useState(JSON.parse(localStorage.getItem("title")) || "")
     const [description, setDescription] = useState(JSON.parse(localStorage.getItem("description")) || "")
     const dispatch = useDispatch()
-    const theme = useSelector(state => state.notes.theme)
+    const theme = useSelector(state => state.tasks.theme)
 
     function handleSave() {
-        if (title && description) {
-            dispatch(addNote({
+        if (title && description && name) {
+            dispatch(addTask({
                 id: Date.now().toString(32),
+                name,
                 title,
                 description,
                 savedDate: new Date().toString()
@@ -22,12 +23,14 @@ const Home = () => {
 
             setTitle("")
             setDescription("")
+            setName("")
             localStorage.setItem("title", JSON.stringify(""))
             localStorage.setItem("description", JSON.stringify(""))
+            localStorage.setItem("name", JSON.stringify(""))
 
-            toast.success('Note Saved', {
+            toast.success('Task Saved', {
                 position: "top-right",
-                autoClose: 1500,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -37,7 +40,7 @@ const Home = () => {
             });
         }
         else {
-            toast.error('Please fill up the Note', {
+            toast.error('Please fill up the Project details', {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -54,7 +57,7 @@ const Home = () => {
     return (
         <>
             <Helmet>
-                <title>Add Note</title>
+                <title>Add Task</title>
             </Helmet>
             <ToastContainer />
             <div className="bg-slate-100 dark:bg-black flex justify-center items-center basis-[645px] font-mono">
