@@ -1,22 +1,18 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import { useSelector } from "react-redux"
 
 const RootLayout = () => {
-  const theme = useSelector(state => state.tasks.theme)
 
-  return (
-    <div className={theme}>
+    return (
 
-      <div className='flex flex-col min-h-screen relative'>
+        <div className='flex flex-col min-h-screen'>
 
-        <Navbar />
-        <Outlet />
+            <Navbar />
+            <Outlet />
 
-      </div>
+        </div>
 
-    </div>
-  )
+    )
 }
 
 export default RootLayout

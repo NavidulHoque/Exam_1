@@ -4,9 +4,6 @@ const tasksSlice = createSlice({
     name: "tasks",
     initialState: {
         tasks: JSON.parse(localStorage.getItem("tasks")) || [],
-        DeleteConfirmationMessageState: JSON.parse(localStorage.getItem("messageState")) || false,
-        taskID: "",
-        theme: JSON.parse(localStorage.getItem("theme")) || "light",
     },
     reducers: {
         addTask: (state, action) => {
@@ -15,9 +12,9 @@ const tasksSlice = createSlice({
             localStorage.setItem("tasks", JSON.stringify(state.tasks))
 
         },
-        deleteTask: (state) => {
+        deleteTask: (state, action) => {
 
-            state.tasks = state.tasks.filter(task => task.id != state.taskID)
+            state.tasks = state.tasks.filter(task => task.id != action.payload)
             localStorage.setItem("tasks", JSON.stringify(state.tasks))
 
         },
@@ -30,23 +27,9 @@ const tasksSlice = createSlice({
 
             localStorage.setItem("tasks", JSON.stringify(state.tasks))
         },
-        toggleDeleteConfirmationMessage: (state, action) => {
-
-            state.DeleteConfirmationMessageState = !state.DeleteConfirmationMessageState
-
-            state.taskID = action.payload
-
-            localStorage.setItem("messageState", JSON.stringify(state.DeleteConfirmationMessageState))
-        },
-        toggleTheme: (state, action) => {
-
-            state.theme = action.payload
-            localStorage.setItem("theme", JSON.stringify(state.theme))
-
-        }
     }
 })
 
-export const { addTask, deleteTask, updateTask, toggleDeleteConfirmationMessage, toggleTheme } = tasksSlice.actions
+export const { addTask, deleteTask, updateTask } = tasksSlice.actions
 export default tasksSlice.reducer
 
