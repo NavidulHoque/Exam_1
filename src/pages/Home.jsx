@@ -5,6 +5,7 @@ import { Bounce, ToastContainer, toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
+    const [name, setName] = useState(JSON.parse(localStorage.getItem("name")) || "")
     const [title, setTitle] = useState(JSON.parse(localStorage.getItem("title")) || "")
     const [description, setDescription] = useState(JSON.parse(localStorage.getItem("description")) || "")
     const dispatch = useDispatch()

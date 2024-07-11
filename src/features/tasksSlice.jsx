@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const tasksSlice = createSlice({
     name: "tasks",
     initialState: {
-        notes: JSON.parse(localStorage.getItem("tasks")) || [],
+        tasks: JSON.parse(localStorage.getItem("tasks")) || [],
         DeleteConfirmationMessageState: JSON.parse(localStorage.getItem("messageState")) || false,
         taskID: "",
         theme: JSON.parse(localStorage.getItem("theme")) || "light",
@@ -11,24 +11,24 @@ const tasksSlice = createSlice({
     reducers: {
         addTask: (state, action) => {
 
-            state.notes = [...state.notes, action.payload]
-            localStorage.setItem("notes", JSON.stringify(state.notes))
+            state.tasks = [...state.tasks, action.payload]
+            localStorage.setItem("tasks", JSON.stringify(state.tasks))
 
         },
         deleteTask: (state) => {
 
-            state.notes = state.notes.filter(note => note.id != state.userID)
-            localStorage.setItem("notes", JSON.stringify(state.notes))
+            state.tasks = state.tasks.filter(task => task.id != state.taskID)
+            localStorage.setItem("tasks", JSON.stringify(state.tasks))
 
         },
         updateTask: (state, action) => {
 
-            const index = state.notes.findIndex(note => note.id === action.payload.id);
+            const index = state.tasks.findIndex(task => task.id === action.payload.id);
             if (index !== -1) {
-                state.notes[index] = action.payload;
+                state.tasks[index] = action.payload;
             }
 
-            localStorage.setItem("notes", JSON.stringify(state.notes))
+            localStorage.setItem("tasks", JSON.stringify(state.tasks))
         },
         toggleDeleteConfirmationMessage: (state, action) => {
 
