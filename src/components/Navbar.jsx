@@ -4,20 +4,23 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
     
     return (
-        <nav className="bg-white py-[10px] sticky">
+        <nav className="bg-[rgb(50,50,50)] h-[80px] text-white py-[10px] sticky top-0 left-0 flex items-center">
 
-            <div className="w-[90vw] h-full mx-auto flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-x-5">
+            <div className="w-[90vw] mx-auto">
 
-                <ul className="">
+                <ul className="flex justify-end gap-x-8">
+
                     <li>
                         <Link className="hover:font-semibold" to="/">Home</Link>
                     </li>
                     <li>
-                        <Link className="hover:font-semibold" to="/savedNotes">Saved Notes</Link>
+                        <Link className="hover:font-semibold" to="/taskView">Task View</Link>
                     </li>
-                </ul>
+                    <li>
+                        <Link className="hover:font-semibold" to="/contact">Contact</Link>
+                    </li>
 
-                
+                </ul>
 
             </div>
 
