@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react"
 import { formatDistance } from 'date-fns'
 import { Bounce, toast } from 'react-toastify';
 
-const SavedNote = ({ note }) => {
+const Task = ({ note }) => {
 
   const dispatch = useDispatch()
   const [update, setUpdate] = useState(true)
@@ -103,4 +103,4 @@ const SavedNote = ({ note }) => {
   )
 }
 
-export default SavedNote
+export default Task
