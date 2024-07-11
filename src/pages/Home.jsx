@@ -35,6 +35,7 @@ const Home = () => {
                 closeOnClick: true,
                 pauseOnHover: false,
                 draggable: true,
+                theme: "dark",
                 transition: Bounce,
             });
         }
@@ -46,6 +47,7 @@ const Home = () => {
                 closeOnClick: true,
                 pauseOnHover: false,
                 draggable: true,
+                theme: "dark",
                 transition: Bounce,
             });
         }
@@ -58,27 +60,27 @@ const Home = () => {
                 <title>Add Task</title>
             </Helmet>
             <ToastContainer />
-            <div className="bg-slate-100 flex justify-center items-center basis-[645px] font-mono">
+            <div className="bg-black flex justify-center items-center h-[90vh] font-mono text-white">
 
-                <div className="flex flex-col items-start gap-y-2 rounded-md p-[10px] text-[24px] w-[80vw] bg-white shadow-md">
+                <div className="flex flex-col items-start gap-y-2 rounded-md p-[10px] text-[24px] w-[45vw] bg-[rgb(50,50,50)]">
 
-                    <h1 className="text-center text-[30px] w-full">Add Your Tasks</h1>
+                    <h1 className="text-center text-[30px] w-full">Add Your Task</h1>
 
-                    <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none" type="text" placeholder="Name" autoFocus onChange={(e) => {
+                    <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none bg-[rgb(50,50,50)]" type="text" placeholder="Name" autoFocus onChange={(e) => {
 
                         setName(e.target.value)
                         localStorage.setItem("name", JSON.stringify(e.target.value))
 
                     }} value={name} />
 
-                    <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none" type="text" placeholder="Title" onChange={(e) => {
+                    <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none bg-[rgb(50,50,50)]" type="text" placeholder="Project title" onChange={(e) => {
 
                         setTitle(e.target.value)
                         localStorage.setItem("title", JSON.stringify(e.target.value))
 
                     }} value={title} />
 
-                    <textarea className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none resize-none" placeholder="Description" maxLength={200} rows={4} onChange={(e) => {
+                    <textarea className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none resize-none bg-[rgb(50,50,50)]" placeholder="Project description" maxLength={200} rows={4} onChange={(e) => {
 
                         setDescription(e.target.value)
                         localStorage.setItem("description", JSON.stringify(e.target.value))
