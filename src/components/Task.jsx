@@ -38,7 +38,7 @@ const Task = ({ task }) => {
         else {
 
             if (title && description && name) {
-                toast.success('Task Updated', {
+                toast.success('Successfully task updated', {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -81,15 +81,33 @@ const Task = ({ task }) => {
     }
 
     return (
-        <div className="min-w-[300px] border-[1px] border-white bg-[rgb(50,50,50)] text-white shadow-md rounded-md p-[10px] flex flex-col gap-y-2">
+        <div className="min-w-[300px] border-[1px] border-white bg-[rgb(50,50,50)] text-white shadow-md rounded-md py-[10px] px-[15px] flex flex-col gap-y-5">
 
-            <input ref={inputRef} className="p-[5px] text-[24px] outline-none w-full bg-[rgb(50,50,50)] font-semibold" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} readOnly={update} />
+            <div className="flex flex-col w-full gap-y-2">
 
-            <input className="p-[5px] text-[24px] outline-none w-full bg-[rgb(50,50,50)] font-semibold" placeholder="Project title" onChange={(e) => setTitle(e.target.value)} value={title} readOnly={update} />
+                <label htmlFor="name" className="text-[24px]">Name:</label>
 
-            <textarea className="p-[5px] text-[18px] resize-none w-full outline-none dark:bg-[rgb(50,50,50)]" placeholder="Project description" onChange={(e) => setDescription(e.target.value)} value={description} readOnly={update} maxLength={200} rows={4} />
+                <input ref={inputRef} className="p-[5px] text-[20px] outline-none w-full bg-[rgb(50,50,50)]" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} readOnly={update} name="name" id="name" />
 
-            <span className="text-[18px] text-slate-500 dark:text-slate-300">{formatDistance(task.savedDate, new Date(), { addSuffix: true })}</span>
+            </div>
+
+            <div className="flex flex-col w-full gap-y-2">
+
+                <label htmlFor="title" className="text-[24px]">Project Title:</label>
+
+                <input className="p-[5px] text-[20px] outline-none w-full bg-[rgb(50,50,50)]" placeholder="Title" onChange={(e) => setTitle(e.target.value)} value={title} readOnly={update} id="title" name="title" />
+
+            </div>
+
+            <div className="flex flex-col w-full gap-y-2">
+
+                <label htmlFor="description" className="text-[24px]">Project Description:</label>
+
+                <textarea className="p-[5px] text-[20px] resize-none w-full outline-none bg-[rgb(50,50,50)]" placeholder="Description" onChange={(e) => setDescription(e.target.value)} value={description} readOnly={update} maxLength={100} rows={3} name="description" id="description" />
+
+            </div>
+
+            <span className="text-[18px] text-slate-300">{formatDistance(task.savedDate, new Date(), { addSuffix: true })}</span>
 
             <div className="flex gap-x-3 text-white w-full justify-end">
 
