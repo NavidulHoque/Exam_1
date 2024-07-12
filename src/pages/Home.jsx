@@ -62,32 +62,62 @@ const Home = () => {
             <ToastContainer />
             <div className="bg-black flex justify-center items-center h-[90vh] font-mono text-white">
 
-                <div className="flex flex-col items-start gap-y-2 rounded-md p-[10px] text-[24px] w-[45vw] bg-[rgb(50,50,50)]">
+                <div className="flex flex-col items-start gap-y-5 rounded-md py-[10px] px-[20px] text-[24px] w-[45vw] bg-[rgb(50,50,50)]">
 
                     <h1 className="text-center text-[30px] w-full">Add Your Task</h1>
 
-                    <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none bg-[rgb(50,50,50)]" type="text" placeholder="Name" autoFocus onChange={(e) => {
+                    <div className="flex flex-col w-full gap-y-2">
+                        <label htmlFor="name">Name:</label>
 
-                        setName(e.target.value)
-                        localStorage.setItem("name", JSON.stringify(e.target.value))
+                        <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none bg-[rgb(50,50,50)]" type="text" placeholder="Name" autoFocus onChange={(e) => {
 
-                    }} value={name} />
+                            setName(e.target.value)
+                            localStorage.setItem("name", JSON.stringify(e.target.value))
 
-                    <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none bg-[rgb(50,50,50)]" type="text" placeholder="Project title" onChange={(e) => {
+                        }} value={name} id="name" name="name" />
+                    </div>
 
-                        setTitle(e.target.value)
-                        localStorage.setItem("title", JSON.stringify(e.target.value))
+                    <div className="flex flex-col w-full gap-y-2">
+                        <label htmlFor="title">Project Title:</label>
 
-                    }} value={title} />
+                        <input className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none bg-[rgb(50,50,50)]" type="text" placeholder="title" onChange={(e) => {
 
-                    <textarea className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none resize-none bg-[rgb(50,50,50)]" placeholder="Project description" maxLength={200} rows={4} onChange={(e) => {
+                            setTitle(e.target.value)
+                            localStorage.setItem("title", JSON.stringify(e.target.value))
 
-                        setDescription(e.target.value)
-                        localStorage.setItem("description", JSON.stringify(e.target.value))
+                        }} value={title} id="title" name="title" />
+                    </div>
 
-                    }} value={description} />
+                    <div className="flex flex-col w-full gap-y-2">
 
-                    <button onClick={handleSave} className="bg-[#3498db] text-white hover:bg-[#2980b9] rounded-md px-[10px]">Save Task</button>
+                        <label htmlFor="description">Project Description:</label>
+
+                        <textarea className="p-[5px] w-full rounded-md border-[2px] border-[#3498db] outline-none resize-none bg-[rgb(50,50,50)]" placeholder="description" maxLength={200} rows={4} onChange={(e) => {
+
+                            setDescription(e.target.value)
+                            localStorage.setItem("description", JSON.stringify(e.target.value))
+
+                        }} value={description} id="description" name="description" />
+
+
+                    </div>
+
+                    <div>
+                        <input type="text" />
+                    </div>
+
+                    <div className="flex gap-x-3">
+
+                        <button onClick={handleSave} className="bg-[#3498db] text-white hover:bg-[#2980b9] rounded-md px-[10px]">Save</button>
+                        <button onClick={() => {
+
+                            setName("")
+                            setTitle("")
+                            setDescription("")
+
+                        }} className="bg-[#3498db] text-white hover:bg-[#2980b9] rounded-md px-[10px]">Cancel</button>
+
+                    </div>
 
                 </div>
 

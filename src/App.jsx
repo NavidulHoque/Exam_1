@@ -4,6 +4,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import RootLayout from './RootLayout.jsx'
 import Home from './pages/Home.jsx'
 import TaskView from './pages/TaskView.jsx'
+import Contact from './pages/Contact';
 
 function App() {
   const router = createBrowserRouter(
@@ -12,6 +13,7 @@ function App() {
         <Route element={<RootLayout />}>
           <Route path='/' element={<Home />} />
           <Route path='/taskView' element={<TaskView />} />
+          <Route path='/contact' element={<Contact />} />
         </Route>
       </Route>
     )

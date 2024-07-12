@@ -5,19 +5,19 @@ import { useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import Task from "../components/Task";
 
-const SavedNotes = () => {
+const TaskView = () => {
     const tasks = useSelector((state) => state.tasks.tasks)
     const [showHowMany, setShowHowMany] = useState(6)
 
     return (
         <>
             <Helmet>
-                <title>Saved Notes</title>
+                <title>Task View</title>
             </Helmet>
 
             <ToastContainer />
 
-            <div className='bg-black basis-[645px] pt-[20px] flex flex-col gap-y-8 pb-[20px]'>
+            <div className='bg-black basis-[90vh] pt-[20px] flex flex-col gap-y-8 pb-[20px]'>
 
                 <div className="w-[90vw] mx-auto grid gap-5 grid-cols-3">
 
@@ -48,4 +48,4 @@ const SavedNotes = () => {
     )
 }
 
-export default SavedNotes
+export default TaskView

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux"
 import { useEffect, useRef, useState } from "react"
 import { formatDistance } from 'date-fns'
 import { Bounce, toast } from 'react-toastify';
-import { updateTask } from "../features/tasksSlice";
+import { deleteTask, updateTask } from "../features/tasksSlice";
 
 const Task = ({ task }) => {
 
@@ -97,7 +97,11 @@ const Task = ({ task }) => {
 
                 <button onClick={handleUpdate} className="w-[75px] bg-[#9b59b6] hover:bg-[#8e44ad] rounded-md py-[7px] text-[18px]">{update ? "Update" : "Save"}</button>
 
-                <button onClick={handleDelete} className="w-[75px] bg-red-500 hover:bg-red-600 rounded-md py-[7px] text-[18px]">Delete</button>
+                <button onClick={() => {
+
+                    dispatch(deleteTask(task.id))
+
+                }} className="w-[75px] bg-red-500 hover:bg-red-600 rounded-md py-[7px] text-[18px]">Delete</button>
 
             </div>
 

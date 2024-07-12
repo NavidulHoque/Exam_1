@@ -1,7 +1,7 @@
 
 const Contact = () => {
   return (
-    <div>
+    <div className='bg-black basis-[90vh]'>
       
     </div>
   )
